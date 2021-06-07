@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+
+    <ImageView
+        android:id="@+id/img_OUC"
+        android:layout_width="270dp"
+        android:layout_height="270dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/xiaohui"/>
+
+
+    <Button
+        android:id="@+id/btn_hfs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_OUC"
+        android:layout_marginTop="48dp"
+        android:text="红富士"
+        android:textColor="@color/title"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:letterSpacing="0.3"
+        android:background="@drawable/button"
+        android:layout_marginHorizontal="36dp"/>
+    <Button
+        android:id="@+id/btn_hys"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_hfs"
+        android:layout_marginTop="36dp"
+        android:text="黄元帅"
+        android:textColor="@color/title"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:letterSpacing="0.3"
+        android:background="@drawable/button"
+        android:layout_marginHorizontal="36dp"/>
+
+
+    <Button
+        android:id="@+id/btn_tx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_hys"
+        android:layout_marginTop="36dp"
+        android:text="糖心"
+        android:textColor="@color/title"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:letterSpacing="1.2"
+        android:background="@drawable/button"
+        android:layout_marginHorizontal="36dp"/>
+
+    <TextView
+        android:id="@+id/tv_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        android:text="OUC某小队作品"
+        android:textColor="@color/title"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:letterSpacing="0.2"
+        android:layout_marginHorizontal="36dp"/>
+
+
+</RelativeLayout>
