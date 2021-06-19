@@ -156,12 +156,13 @@ public class HFSCameraActivity extends AppCompatActivity {
     private TextView toptext;
     private TextView tv_iso,tv_time,tv_distance;
 
-    private int[] iso= new int[]{100, 200, 300, 400, 500, 600, 700, 800};
-    private long[]  time= new long[]{100000000, 100000000, 100000000, 100000000,
-                                     100000000, 100000000, 100000000, 100000000};
+    private int[] iso= new int[]{3082, 2309, 1390, 1343, 395, 1248, 3575, 8650};
+    private long[]  time= new long[]{58823529, 50000000, 40000000, 40000000,
+            30303030, 40000000, 58823529, 71428571};
     private float distance=5;
     private float qgd=100/distance;//转为屈光度
     private int i=0;
+    private String filepath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -440,12 +441,14 @@ public class HFSCameraActivity extends AppCompatActivity {
                         mCameraCaptureBuilder.set(CaptureRequest.CONTROL_AE_MODE, CameraMetadata.CONTROL_AE_MODE_OFF);
                         mCameraCaptureBuilder.set(CaptureRequest.CONTROL_MODE,0);
                         mCameraCaptureBuilder.set(CaptureRequest.CONTROL_AF_MODE,CameraMetadata.CONTROL_AF_MODE_OFF);
+                        //mCameraCaptureBuilder.set(CaptureRequest.CONTROL_AF_MODE,CameraMetadata.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
+
                         mCameraCaptureBuilder.set(CaptureRequest.CONTROL_AE_EXPOSURE_COMPENSATION,0);//ev曝光补偿 -其他锁定后此项无用
                         mCameraCaptureBuilder.set(CaptureRequest.SENSOR_SENSITIVITY, iso[i]);//传感器灵敏度iso
                         mCameraCaptureBuilder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, (long) time[i]);//曝光时长  单位是纳秒
 
 
-                        mCameraCaptureBuilder.set(CaptureRequest.LENS_FOCUS_DISTANCE,  (float)qgd );//焦距
+                        mCameraCaptureBuilder.set(CaptureRequest.LENS_FOCUS_DISTANCE, qgd );//焦距
                         //Log.v("asdd",mCameraCaptureBuilder.get(CaptureRequest.LENS_FOCUS_DISTANCE)+"");
                         mCameraCaptureBuilder.set(CaptureRequest.CONTROL_AWB_MODE,  CaptureRequest.CONTROL_AWB_MODE_OFF);//白平衡
 
@@ -552,11 +555,14 @@ public class HFSCameraActivity extends AppCompatActivity {
                         String fName = "IMG_" + timeStamp+ ".jpg";
                         saveImage2Public(HFSCameraActivity.this,fName,bytes,"Pictures");
 
+                        filepath=fName;
                         Toast.makeText(HFSCameraActivity.this,"拍照并保存成功",Toast.LENGTH_SHORT).show();
 
                         if (i>=8) {
 
-                            startActivity(new Intent( HFSCameraActivity.this,ResultActivity.class));
+                            Intent intent=new Intent( HFSCameraActivity.this,ResultActivity.class);
+                            intent.putExtra("path",filepath);
+                            startActivity(intent);
                             finish();
                         }
 
